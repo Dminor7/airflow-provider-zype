@@ -36,7 +36,7 @@ def zype_worflow():
         task_id="get_videos",
         zype_conn_id="conn_zype",
         resource="list_videos",
-        max_pages=1
+        max_pages=1,
     )
 
     task_get_videos

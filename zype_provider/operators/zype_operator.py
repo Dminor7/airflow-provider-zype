@@ -56,7 +56,9 @@ class ZypeOperator(BaseOperator):
 
         self.log.info(f"Calling Zype {self.resource} resource")
         if self.request_kwargs:
-            data = hook.run(resource=self.resource, max_pages=self.max_pages,**self.request_kwargs)
+            data = hook.run(
+                resource=self.resource, max_pages=self.max_pages, **self.request_kwargs
+            )
         else:
             data = hook.run(resource=self.resource, max_pages=self.max_pages)
 

@@ -19,7 +19,11 @@ setup(
     },
     license="Apache License 2.0",
     packages=["zype_provider", "zype_provider.hooks", "zype_provider.operators"],
-    install_requires=["apache-airflow>=2.0","zype @ git+https://github.com/Dminor7/zype-python.git@master"],
+    install_requires=[
+        "apache-airflow>=2.0",
+        "zype @ git+https://github.com/Dminor7/zype-python.git@master",
+        "apache-airflow-providers-google==4.0.0",
+    ],
     setup_requires=["setuptools", "wheel"],
     author="Darsh Shukla",
     author_email="contact.dshukla@gmail.com",

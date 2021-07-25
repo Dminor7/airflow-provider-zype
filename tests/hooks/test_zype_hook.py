@@ -44,7 +44,7 @@ class TestZypeHook(unittest.TestCase):
         hook = ZypeHook(zype_conn_id="conn_zype")
 
         # Zype Hook's run method executes an API call
-        data = hook.run(resource="list_videos", max_pages=1,params={"per_page": 20})
+        data = hook.run(resource="list_videos", max_pages=1, params={"per_page": 20})
 
         assert len(data) == 20
 
