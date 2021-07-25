@@ -61,6 +61,7 @@ class ZypeHook(BaseHook):
         resource: Literal[
             "list_consumers", "list_stream_hours", "list_subscriptions", "list_videos"
         ],
+        max_pages: Optional[int] = None,
         **request_kwargs: Any,
     ) -> Any:
         r"""
@@ -81,5 +82,5 @@ class ZypeHook(BaseHook):
         else:
             res = getattr(client, resource)().get()
 
-        data = [resp().data for resp in res().pages()]
+        data = [resp().data for resp in res().pages(max_pages=max_pages)]
         return data

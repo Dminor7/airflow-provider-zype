@@ -36,6 +36,7 @@ class TestZypeOperator(unittest.TestCase):
             task_id="run_operator",
             zype_conn_id="conn_zype",
             resource="list_videos",
+            max_pages=1,
             request_kwargs={"params": {"per_page": per_page}},
         )
 

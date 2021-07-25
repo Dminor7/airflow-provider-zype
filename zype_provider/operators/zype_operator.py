@@ -36,6 +36,7 @@ class ZypeOperator(BaseOperator):
             "list_consumers", "list_stream_hours", "list_subscriptions", "list_videos"
         ],
         zype_conn_id: str = "conn_zype",
+        max_pages: Optional[int] = None,
         request_kwargs: Optional[Any] = None,
         **kwargs: Any,
     ) -> None:
@@ -43,7 +44,7 @@ class ZypeOperator(BaseOperator):
         self.zype_conn_id = zype_conn_id
         self.resource = resource
         self.request_kwargs = request_kwargs
-
+        self.max_pages = max_pages
         if kwargs.get("xcom_push") is not None:
             raise AirflowException(
                 "'xcom_push' was deprecated, use 'BaseOperator.do_xcom_push' instead"
@@ -55,8 +56,8 @@ class ZypeOperator(BaseOperator):
 
         self.log.info(f"Calling Zype {self.resource} resource")
         if self.request_kwargs:
-            data = hook.run(resource=self.resource, **self.request_kwargs)
+            data = hook.run(resource=self.resource, max_pages=self.max_pages,**self.request_kwargs)
         else:
-            data = hook.run(resource=self.resource)
+            data = hook.run(resource=self.resource, max_pages=self.max_pages)
 
         return data
